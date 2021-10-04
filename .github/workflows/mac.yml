@@ -19,7 +19,7 @@ jobs:
       with:
         version: "12.4"
 
-    - name Get BibleTime Docs
+    - name: Get BibleTime Docs
       run: git clone https://github.com/bibletime/generated_docs.git
 
     - name: Install dependencies
@@ -69,7 +69,7 @@ jobs:
         cmake --install . 
         cp -r ../generated_docs/docs/v3.0.2/h* ../install/BibleTime.app/Contents/share/doc/bibletime
 
-    - name list files
+    - name: list files
       shell: bash
       run: |
         cd install
