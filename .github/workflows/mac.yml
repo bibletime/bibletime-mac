@@ -10,7 +10,7 @@ on:
 jobs:
   mac:
     name: build-mac
-    runs-on: [macos-latest]
+    runs-on: [macOS-10.15]
 
     steps:
     - name: Install dependencies
