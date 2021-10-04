@@ -47,7 +47,7 @@ jobs:
           -S . \
           -B build \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX:PATH=install \
+          -DCMAKE_INSTALL_PREFIX:PATH=../install \
           -DBUILD_HANDBOOK_HTML:BOOL=OFF \
           -DBUILD_HANDBOOK_PDF:BOOL=OFF \
           -DBUILD_HOWTO_HTML:BOOL=OFF \
@@ -61,5 +61,7 @@ jobs:
 
     - name: Install
       shell: bash
-      run: cmake --install . 
+      run: |
+        cd build
+        cmake --install . 
 
