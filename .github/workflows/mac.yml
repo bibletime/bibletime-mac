@@ -38,6 +38,8 @@ jobs:
       run: |
         mkdir build
         mkdir install
+        pwd
+        ls -l
         cmake \
           -S bibletime \
           -B bibletime \
