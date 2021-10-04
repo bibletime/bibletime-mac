@@ -17,7 +17,7 @@ jobs:
       run: |
         set -e
         export HOMEBREW_NO_AUTO_UPDATE=1
-        brew install clucene sword po4a xsltproc fop
+        brew install clucene sword 
  
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
@@ -43,7 +43,11 @@ jobs:
           -S . \
           -B . \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX:PATH=install
+          -DCMAKE_INSTALL_PREFIX:PATH=install \
+          -DBUILD_HANDBOOK_HTML:BOOL=OFF \
+          -DBUILD_HANDBOOK_PDF:BOOL=OFF \
+          -DBUILD_HOWTO_HTML:BOOL=OFF \
+          -DBUILD_HOWTO_PDF:BOOL=OFF
 
     - name: Build
       shell: bash
