@@ -41,10 +41,6 @@ jobs:
     - name: Configure
       shell: bash
       run: |
-        pwd
-        ls -l
-        ls /Applications
-        ls /Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         mkdir build
         mkdir install
         cmake \
@@ -63,7 +59,7 @@ jobs:
         cd build
         cmake --build . --config Release
 
-    - name: Install Strip
+    - name: Install
       shell: bash
-      run: cmake --install . --strip
+      run: cmake --install . 
 
