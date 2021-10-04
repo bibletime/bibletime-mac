@@ -43,8 +43,7 @@ jobs:
       run: |
         pwd
         ls -l
-        ls /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform
-        ls /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer
+        ls /Applications
         ls /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         mkdir build
         mkdir install
