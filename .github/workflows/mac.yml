@@ -44,7 +44,7 @@ jobs:
         pwd
         ls -l
         ls /Applications
-        ls /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
+        ls /Applications/Xcode_12.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
         mkdir build
         mkdir install
         cmake \
