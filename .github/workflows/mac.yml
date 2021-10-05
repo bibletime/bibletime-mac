@@ -19,14 +19,6 @@ jobs:
       with:
         version: "12.4"
 
-    - name: Get BibleTime Docs
-      run: |
-        echo dddddddddddddddddddddddd1
-        git clone https://github.com/bibletime/generated_docs.git
-        pwd
-        ls -l
-        echo dddddddddddddddddddddddd2
-
     - name: Install dependencies
       run: |
         set -e
@@ -46,6 +38,14 @@ jobs:
         repository: bibletime/bibletime
         ref: stable-3.0
         
+    - name: Get BibleTime Docs
+      run: |
+        echo dddddddddddddddddddddddd1
+        git clone https://github.com/bibletime/generated_docs.git
+        pwd
+        ls -l
+        echo dddddddddddddddddddddddd2
+
     - name: Configure BibleTime
       shell: bash
       run: |
@@ -84,12 +84,14 @@ jobs:
         ls -l
         echo ibibibib2
         cmake --install . 
+        echo ibibibib3
         ls -l ..
+        echo ibibibib4
         ls -l ../generated_docs
         ls -l ../generated_docs/docs
         ls -l ../generated_docs/docs/v3.0.2/
         cp -r ../generated_docs/docs/v3.0.2/h* ../install/BibleTime.app/Contents/share/doc/bibletime
-        echo ibibibib3
+        echo ibibibib5
 
     - name: list files
       shell: bash
