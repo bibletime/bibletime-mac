@@ -85,12 +85,10 @@ jobs:
         echo ibibibib2
         cmake --install . 
         echo ibibibib3
-        ls -l ..
         echo ibibibib4
-        ls -l ../generated_docs
-        ls -l ../generated_docs/docs
         ls -l ../generated_docs/docs/v3.0.2/
-        cp -r ../generated_docs/docs/v3.0.2/h* ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -r ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -r ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
         echo ibibibib5
 
     - name: list files
