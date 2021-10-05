@@ -1,5 +1,14 @@
-name: macOS CI
+ 
 # Workflow for building BibleTime for macOS
+
+# build directories
+#  <build_home>          The bibletime/bibletime-mac repository
+#  <build_home/bibletime The bibletime/bibletime repository
+#  <build_home>/build    The directory for building BibleTime
+#  <build_home>/install  The install directory for building BibleTime
+
+
+name: macOS CI
 on:
   push:
     branches:
@@ -7,17 +16,21 @@ on:
   repository_dispatch:
   pull_request: {}
 
+
+env:
+  BT_NAME: BibleTime
+  BT_VERSION: 3.0.2
+  BT_BRANCH: stable-3.0
+  MACOS_VERSION: macOS-10.15
+  QT_VERSION: 5.15.2
+
+
 jobs:
   mac:
     name: build-mac
-    runs-on: [macOS-10.15]
+    runs-on: [${{ env.MACOS_VERSION}} ]
 
     steps:
-
-    - name: "Select Xcode_12.4"
-      uses: devbotsxyz/xcode-select@v1
-      with:
-        version: "12.4"
 
     - name: Install dependencies
       run: |
@@ -28,18 +41,18 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
       with:
-        version: '5.15.2'
+        version: ${{ env.QT_VERSION }}
         host: 'mac'
         target: 'desktop'
 
-    - name: Checkout BibleTime Stable
+    - name: Checkout BibleTime
       run: |
         git clone https://github.com/bibletime/bibletime.git
         cd bibletime
-        git checkout stable-3.0
+        git checkout ${{ env.BT_BRANCH }}
         ls -l
         
-    - name: Get BibleTime Docs
+    - name: Checkout BibleTime Docs
       run: |
         git clone https://github.com/bibletime/generated_docs.git
 
@@ -69,20 +82,20 @@ jobs:
         cd build
         cmake --install . 
         mkdir -p ../install/BibleTime.app/Contents/share/doc/bibletime
-        cp -R ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
-        cp -R ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -R ../generated_docs/docs/v${{env.BT_VERSION}}/howto ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -R ../generated_docs/docs/v${{env.BT_VERSION}}/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
 
     - name: make dmg
       shell: bash
       run: |
         cd install
         ln -s /Applications .
-        create-dmg BibleTime-3.0.2.dmg .
+        create-dmg ${{env.BT_NAME}}-${{env.BT_VERSION}}.dmg .
 
     - name: Save BibleTime Installer
       uses: actions/upload-artifact@v2
       with:
-        name: bibletime-macos-installer
-        path: install/BibleTime-3.0.2.dmg 
+        name: ${{env.BT_NAME}}-${{env.BT_VERSION}}.dmg
+        path: install/${{env.BT_NAME}}-${{env.BT_VERSION}}.dmg
         retention-days: 5
 
