@@ -67,6 +67,10 @@ jobs:
       run: |
         cd build
         cmake --install . 
+        ls -l ..
+        ls -l ../generated_docs
+        ls -l ../generated_docs/docs
+        ls -l ../generated_docs/docs/v3.0.2/
         cp -r ../generated_docs/docs/v3.0.2/h* ../install/BibleTime.app/Contents/share/doc/bibletime
 
     - name: list files
