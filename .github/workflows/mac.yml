@@ -41,11 +41,15 @@ jobs:
         repository: bibletime/bibletime
         ref: stable-3.0
         
-    - name: Configure
+    - name: Configure BibleTime
       shell: bash
       run: |
         mkdir build
         mkdir install
+        echo cbcbcbcb
+        pwd
+        ls -l
+        echo cbcbcbcb
         cmake \
           -S . \
           -B build \
@@ -56,22 +60,30 @@ jobs:
           -DBUILD_HOWTO_HTML:BOOL=OFF \
           -DBUILD_HOWTO_PDF:BOOL=OFF
 
-    - name: Build
+    - name: Build BibleTime
       shell: bash
       run: |
         cd build
+        echo bbbbbbbb
+        pwd
+        ls -l
+        echo bbbbbbbb
         cmake --build . --config Release
 
-    - name: Install
+    - name: Install BibleTime
       shell: bash
       run: |
         cd build
+        echo ibibibib1
+        pwd
+        ls -l
+        echo ibibibib2
         cmake --install . 
-        ls -l ..
         ls -l ../generated_docs
         ls -l ../generated_docs/docs
         ls -l ../generated_docs/docs/v3.0.2/
         cp -r ../generated_docs/docs/v3.0.2/h* ../install/BibleTime.app/Contents/share/doc/bibletime
+        echo ibibibib3
 
     - name: list files
       shell: bash
