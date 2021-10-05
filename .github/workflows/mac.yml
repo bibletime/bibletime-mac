@@ -2,10 +2,11 @@
 # Workflow for building BibleTime for macOS
 
 # build directories
-#  <build_home>          The bibletime/bibletime-mac repository
-#  <build_home/bibletime The bibletime/bibletime repository
-#  <build_home>/build    The directory for building BibleTime
-#  <build_home>/install  The install directory for building BibleTime
+#  <build_home>               The bibletime/bibletime-mac repository
+#  <build_home/bibletime      The bibletime/bibletime repository
+#  <build_home/generated_docs The bibletime/generated_docs repository
+#  <build_home>/build         The directory for building BibleTime
+#  <build_home>/install       The install directory for building BibleTime
 
 
 name: macOS CI
