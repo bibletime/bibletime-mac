@@ -85,7 +85,7 @@ jobs:
         echo ibibibib2
         cmake --install . 
         echo ibibibib3
-        mkdir ../install/BibleTime.app/Contents/share/doc/bibletime
+        mkdir -p ../install/BibleTime.app/Contents/share/doc/bibletime
         cp -R ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
         cp -R ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
         echo ibibibib5
