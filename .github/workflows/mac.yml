@@ -33,9 +33,10 @@ jobs:
         target: 'desktop'
 
     - name: Checkout BibleTime Stable
-        ref: stable-3.0
       run: |
         git clone https://github.com/bibletime/bibletime.git
+        cd bibletime
+        git checkout stable-3.0
         ls -l
         
     - name: Get BibleTime Docs
