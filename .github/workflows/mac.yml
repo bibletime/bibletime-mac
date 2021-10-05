@@ -23,7 +23,7 @@ jobs:
       run: |
         set -e
         export HOMEBREW_NO_AUTO_UPDATE=1
-        brew install ccache clucene sword 
+        brew install ccache clucene sword create-dmg
  
     - name: Install Qt
       uses: jurplel/install-qt-action@v2
@@ -41,11 +41,7 @@ jobs:
         
     - name: Get BibleTime Docs
       run: |
-        echo dddddddddddddddddddddddd1
         git clone https://github.com/bibletime/generated_docs.git
-        pwd
-        ls -l
-        echo dddddddddddddddddddddddd2
 
     - name: Configure BibleTime
       shell: bash
@@ -53,10 +49,6 @@ jobs:
         mkdir install
         mkdir build
         cd build
-        echo cbcbcbcb1
-        pwd
-        ls -l ..
-        echo cbcbcbcb2
         cmake ../bibletime \
           -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX:PATH=../install \
@@ -69,26 +61,16 @@ jobs:
       shell: bash
       run: |
         cd build
-        echo bbbbbbbb
-        pwd
-        ls -l
-        echo bbbbbbbb
         cmake --build . --config Release
 
     - name: Install BibleTime
       shell: bash
       run: |
         cd build
-        echo ibibibib1
-        pwd
-        ls -l
-        echo ibibibib2
         cmake --install . 
-        echo ibibibib3
         mkdir -p ../install/BibleTime.app/Contents/share/doc/bibletime
         cp -R ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
         cp -R ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
-        echo ibibibib5
 
     - name: list files
       shell: bash
@@ -96,5 +78,10 @@ jobs:
         cd install
         find . -type f
 
-
+    - name: make dmg
+      shell: bash
+      run: |
+        cd install
+        ln -s /Applications .
+        create-dmg BibleTime-3.0.2.dmg .
 
