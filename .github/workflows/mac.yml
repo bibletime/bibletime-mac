@@ -87,8 +87,11 @@ jobs:
         echo ibibibib3
         echo ibibibib4
         ls -l ../generated_docs/docs/v3.0.2/
-        cp -r ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
-        cp -r ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
+        ls -l  ../install/BibleTime.app/Contents/share
+        ls -l  ../install/BibleTime.app/Contents/share/doc
+        ls -l  ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -R ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
+        cp -R ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
         echo ibibibib5
 
     - name: list files
