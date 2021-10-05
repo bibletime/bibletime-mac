@@ -72,16 +72,17 @@ jobs:
         cp -R ../generated_docs/docs/v3.0.2/howto ../install/BibleTime.app/Contents/share/doc/bibletime
         cp -R ../generated_docs/docs/v3.0.2/handbook ../install/BibleTime.app/Contents/share/doc/bibletime
 
-    - name: list files
-      shell: bash
-      run: |
-        cd install
-        find . -type f
-
     - name: make dmg
       shell: bash
       run: |
         cd install
         ln -s /Applications .
         create-dmg BibleTime-3.0.2.dmg .
+
+    - name: Save BibleTime Installer
+      uses: actions/upload-artifact@v2
+      with:
+        name: bibletime-macos-installer
+        path: install/BibleTime-3.0.2.dmg 
+        retention-days: 5
 
