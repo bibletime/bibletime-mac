@@ -18,13 +18,12 @@ env:
   BT_NAME: BibleTime
   BT_VERSION: 3.0.2
   BT_BRANCH: stable-3.0
-  MACOS_VERSION: macOS-10.15
   QT_VERSION: 5.15.2
 
 jobs:
   mac:
     name: build-mac
-    runs-on: [ ${{ env.MACOS_VERSION }} ]
+    runs-on: [ macOS-10.15 ]
 
     steps:
 
