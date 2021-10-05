@@ -20,7 +20,12 @@ jobs:
         version: "12.4"
 
     - name: Get BibleTime Docs
-      run: git clone https://github.com/bibletime/generated_docs.git
+      run: |
+        echo dddddddddddddddddddddddd1
+        git clone https://github.com/bibletime/generated_docs.git
+        pwd
+        ls -l
+        echo dddddddddddddddddddddddd2
 
     - name: Install dependencies
       run: |
@@ -79,6 +84,7 @@ jobs:
         ls -l
         echo ibibibib2
         cmake --install . 
+        ls -l ..
         ls -l ../generated_docs
         ls -l ../generated_docs/docs
         ls -l ../generated_docs/docs/v3.0.2/
